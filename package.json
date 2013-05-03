@@ -1,0 +1,8 @@
+{
+  "name": "statvfs",
+  "version": "0.0.1",
+  "description": "POSIX statvfs call",
+  "main": "statvfs.js",
+  "private": false,
+  "gypfile": true
+}

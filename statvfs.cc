@@ -26,7 +26,7 @@ Handle<Value> Statvfs(const Arguments& args) {
     if (res != 0) {
         ThrowException(Exception::TypeError(String::New("statvfs call failed")));
     }
-    
+
     Local<Object> obj = Object::New();
     long unsigned int free_space = vfs.f_bfree * vfs.f_bsize; 
     long unsigned int total_space = vfs.f_blocks * vfs.f_frsize;
@@ -49,16 +49,6 @@ Handle<Value> Statvfs(const Arguments& args) {
     obj->Set(String::NewSymbol("used_space"), Number::New(used_space));
     
     return scope.Close(obj);
-}
-
-// Statvfs factory
-Handle<Value> StatvfsFactory(const Arguments& args) {
-    HandleScope scope;
-    Local<FunctionTemplate> tpl = FunctionTemplate::New(Statvfs);
-    Local<Function> func = tpl->GetFunction();
-    func->SetName(String::NewSymbol("st"));
-
-    return scope.Close(func);
 }
 
 void init(Handle<Object> exports, Handle<Object> module) {

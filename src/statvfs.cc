@@ -16,6 +16,8 @@ Handle<Value> Statvfs(const Arguments& args) {
     String::AsciiValue  ascii(path);
 
     char *pathStr = *ascii;
+    printf("%s\n", pathStr);
+
     struct statvfs vfs;
     int res = statvfs(pathStr, &vfs);
 
